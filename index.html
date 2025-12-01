@@ -1,33 +1,30 @@
+<!doctype html>
 <html>
-  <head>
-    <script
-      src="https://hcaptcha.com/1/api.js?onload=render&render=explicit"
-      async
-      defer
-    ></script>
-    <script>
-      function render() {
-        hcaptcha.render(document.querySelector(".h-captcha"), {
-          sitekey: "a9b5fb07-92ff-493f-86fe-352a2803b3df",
-          origin: "discord.com",
-          callback: (token) => {
-            window.captchaSolved = true;
-          },
-          size: "normal"
-        });
-      }
-    </script>
-    <style>
-      body {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <div class="h-captcha" data-sitekey="a9b5fb07-92ff-493f-86fe-352a2803b3df" data-theme="dark"></div>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8"/>
+  <title>hCaptcha demo</title>
+  <script src="https://hcaptcha.com/1/api.js?onload=render&render=explicit" async defer></script>
+  <style>
+    body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+  </style>
+</head>
+<body>
+  <div class="h-captcha"
+       data-sitekey="a9b5fb07-92ff-493f-86fe-352a2803b3df"
+       data-host="discord.com"
+       data-theme="light">
+  </div>
+
+  <script>
+    function render(){
+      hcaptcha.render(document.querySelector(".h-captcha"),{
+        sitekey: "a9b5fb07-92ff-493f-86fe-352a2803b3df",
+        origin: "https://discord.com",
+        theme: "light",
+        recaptchacompat: "off",
+        callback: () => { window.captchaSolved = true; }
+      });
+    }
+  </script>
+</body>
 </html>
